@@ -7,32 +7,9 @@ namespace Kefir.ShaderColorEditor.Shaders
 {
     public class RgbEffect : ShaderEffect
     {
-        #region public static fields
-
-        public static readonly DependencyProperty InputProperty = RegisterPixelShaderSamplerProperty("Input", typeof(RgbEffect), 0);
-        public static readonly DependencyProperty InputColorProperty = DependencyProperty.Register("InputColor", typeof(Color), typeof(RgbEffect), new UIPropertyMetadata(Color.FromArgb(255, 0, 0, 0), PixelShaderConstantCallback(0)));
-
-        public static readonly DependencyProperty PsFileNameProperty =
-            DependencyProperty.Register("PsFileName", typeof (string), typeof (RgbEffect),
-                new PropertyMetadata("rgb_rg", (d, e) => ((RgbEffect) d).SetShader((string) e.NewValue)));
-
-        #endregion
-
-        #region public constructors
-
         public RgbEffect()
         {
             SetShader(PsFileName);  // default value
-        }
-
-        #endregion
-
-        #region public properties and indexers
-
-        public string PsFileName
-        {
-            get { return (string)GetValue(PsFileNameProperty); }
-            set { SetValue(PsFileNameProperty, value); }
         }
 
         public Brush Input
@@ -48,9 +25,11 @@ namespace Kefir.ShaderColorEditor.Shaders
             set { SetValue(InputColorProperty, value); }
         }
 
-        #endregion
-
-        #region private methods
+        public string PsFileName
+        {
+            get { return (string)GetValue(PsFileNameProperty); }
+            set { SetValue(PsFileNameProperty, value); }
+        }
 
         private void SetShader(string psFileName)
         {
@@ -64,6 +43,11 @@ namespace Kefir.ShaderColorEditor.Shaders
             UpdateShaderValue(InputColorProperty);
         }
 
-        #endregion
+        public static readonly DependencyProperty InputColorProperty = DependencyProperty.Register("InputColor", typeof(Color), typeof(RgbEffect), new UIPropertyMetadata(Color.FromArgb(255, 0, 0, 0), PixelShaderConstantCallback(0)));
+        public static readonly DependencyProperty InputProperty = RegisterPixelShaderSamplerProperty("Input", typeof(RgbEffect), 0);
+
+        public static readonly DependencyProperty PsFileNameProperty =
+            DependencyProperty.Register("PsFileName", typeof (string), typeof (RgbEffect),
+                new PropertyMetadata("rgb_rg", (d, e) => ((RgbEffect) d).SetShader((string) e.NewValue)));
     }
 }
