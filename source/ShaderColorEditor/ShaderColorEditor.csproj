@@ -47,6 +47,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ColorPickerRect.cs" />
+    <Compile Include="Model\ColorRgb.cs" />
+    <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Shaders\RgbEffect.cs" />
     <Page Include="ColorEditor.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -56,6 +60,10 @@
       <DependentUpon>ColorEditor.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
