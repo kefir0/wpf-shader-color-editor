@@ -35,7 +35,7 @@ namespace Kefir.ShaderColorEditor.Shaders
         {
             var pixelShader = new PixelShader
             {
-                UriSource = new Uri(string.Format("/ShaderColorEditor;component/Shaders/{0}.ps", psFileName), UriKind.Relative)
+                UriSource = new Uri(string.Format("/Kefir.ShaderColorEditor;component/Shaders/{0}.ps", psFileName), UriKind.Relative)
             };
             PixelShader = pixelShader;
 

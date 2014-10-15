@@ -88,9 +88,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Shaders\rgb_gb.ps" />
-    <None Include="Shaders\rgb_rb.ps" />
-    <None Include="Shaders\rgb_rg.ps" />
+    <Resource Include="Shaders\rgb_gb.ps" />
+    <Resource Include="Shaders\rgb_rb.ps" />
+    <Resource Include="Shaders\rgb_rg.ps" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
