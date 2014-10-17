@@ -11,7 +11,7 @@
         <Canvas>
             <Border Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}" Background="White">
                 <Border.Effect>
-                    <shaders:RgbEffect />
+                    <shaders:RgbEffect PsFileName="{Binding PsFileName, RelativeSource={RelativeSource TemplatedParent}}" />
                 </Border.Effect>
             </Border>
             <Ellipse Canvas.Left="{TemplateBinding PickX}" Canvas.Top="{TemplateBinding PickY}" 
@@ -24,7 +24,28 @@
         </Canvas>
     </ControlTemplate>
     
+    <ControlTemplate TargetType="{x:Type controls:ColorPickerRect}" x:Key="ColorPickerVerticalSliderTemplate">
+        <Canvas>
+            <Border Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}" Background="White">
+                <Border.Effect>
+                    <shaders:RgbEffect PsFileName="{Binding PsFileName, RelativeSource={RelativeSource TemplatedParent}}" />
+                </Border.Effect>
+            </Border>
+            <Rectangle Canvas.Top="{TemplateBinding PickY}" 
+                     StrokeThickness="2" Stroke="{StaticResource BlackWhiteGradientBrush}"
+                     Width="{TemplateBinding ActualWidth}" Height="7">
+                <Rectangle.RenderTransform>
+                    <TranslateTransform Y="-3" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+        </Canvas>
+    </ControlTemplate>
+    
     <Style TargetType="{x:Type controls:ColorPickerRect}">
         <Setter Property="Template" Value="{StaticResource ColorPickerRectTemplate}" />
+    </Style>
+
+    <Style TargetType="{x:Type controls:ColorPickerRect}" x:Key="ColorPickerVerticalSliderStyle">
+        <Setter Property="Template" Value="{StaticResource ColorPickerVerticalSliderTemplate}" />
     </Style>
 </ResourceDictionary>

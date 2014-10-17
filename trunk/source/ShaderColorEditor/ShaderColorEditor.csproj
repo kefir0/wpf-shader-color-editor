@@ -47,7 +47,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorEditorViewModel.cs" />
     <Compile Include="Controls\ColorPickerRect.cs" />
+    <Compile Include="Model\ColorEditorMode.cs" />
     <Compile Include="Model\ColorRgb.cs" />
     <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Properties\Annotations.cs" />

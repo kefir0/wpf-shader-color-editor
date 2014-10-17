@@ -8,6 +8,9 @@
         public ColorEditor()
         {
             InitializeComponent();
+            RootGrid.DataContext = _viewModel = new ColorEditorViewModel();
         }
+
+        private readonly ColorEditorViewModel _viewModel;
     }
 }
