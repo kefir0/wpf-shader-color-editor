@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorEditorViewModel.cs" />
+    <Compile Include="Controls\ByteDoubleColorConverter.cs" />
     <Compile Include="Controls\ColorPickerRect.cs" />
     <Compile Include="Model\ColorEditorMode.cs" />
     <Compile Include="Model\ColorExtensions.cs" />

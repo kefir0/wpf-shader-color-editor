@@ -6,6 +6,7 @@
              xmlns:controls="clr-namespace:Kefir.ShaderColorEditor.Controls"
              xmlns:shaderColorEditor="clr-namespace:Kefir.ShaderColorEditor"
              xmlns:model="clr-namespace:Kefir.ShaderColorEditor.Model"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -15,9 +16,9 @@
             </ResourceDictionary.MergedDictionaries>
             
             <DataTemplate DataType="{x:Type model:ColorEditorMode}">
-                <StackPanel Orientation="Horizontal">
-                    <RadioButton GroupName="ColorEditorModes" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
-                    <TextBlock Text="{Binding Name}" Width="70" />
+                <StackPanel Orientation="Horizontal" Height="20">
+                    <RadioButton GroupName="ColorEditorModes" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding Name}" Width="20" VerticalAlignment="Center" />
                 </StackPanel>
             </DataTemplate>
 
@@ -32,13 +33,22 @@
                 </Setter>
             </Style>
             
+            <Style TargetType="TextBox">
+                <Setter Property="Margin" Value="0,1,0,1" />
+                <Setter Property="Height" Value="18" />
+                <Setter Property="Width" Value="100" />
+            </Style>
+            
+            <controls:ByteDoubleColorConverter x:Key="ByteDoubleColorConverter" />
+
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid x:Name="RootGrid" d:DataContext="{d:DesignInstance shaderColorEditor:ColorEditorViewModel}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Border BorderThickness="1" BorderBrush="Black">
             <controls:ColorPickerRect Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
@@ -54,6 +64,12 @@
         </Border>
         
         <ListBox ItemsSource="{Binding Modes}" SelectedItem="{Binding SelectedMode}"
-                 Grid.Column="2" Margin="5,0,0,0"/> 
+                 Grid.Column="2" Margin="5,0,0,0" BorderThickness="0"/> 
+        
+        <StackPanel Grid.Column="3">
+            <TextBox Text="{Binding Color.R, ValidatesOnExceptions=True, Converter={StaticResource ByteDoubleColorConverter}, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding Color.G, ValidatesOnExceptions=True, Converter={StaticResource ByteDoubleColorConverter}, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding Color.B, ValidatesOnExceptions=True, Converter={StaticResource ByteDoubleColorConverter}, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -9,6 +9,11 @@ namespace Kefir.ShaderColorEditor.Model
             return (byte) (colorComponent*255);
         }
 
+        public static double ByteToDoubleComponent(byte colorComponent)
+        {
+            return ((double) colorComponent)/255;
+        }
+
         public static Color ToWpfColor(this ColorRgb color)
         {
             return new Color

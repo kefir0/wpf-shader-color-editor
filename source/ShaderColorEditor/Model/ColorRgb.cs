@@ -44,6 +44,7 @@ namespace Kefir.ShaderColorEditor.Model
             {
                 ValidateComponent(value);
                 _r = value;
+                OnPropertyChanged();
             }
         }
 
