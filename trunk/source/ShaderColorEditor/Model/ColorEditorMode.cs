@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Kefir.ShaderColorEditor.Model
 {
@@ -11,9 +10,12 @@ namespace Kefir.ShaderColorEditor.Model
         /// <param name="name">The display name.</param>
         /// <param name="xyShader">The shader to be used on XY color plane.</param>
         /// <param name="zShader">The shader to be used on color slider.</param>
-        public ColorEditorMode(string name, string xyShader, string zShader)
+        /// <param name="updateColor">Update color from coordinates.</param>
+        /// <param name="updateCoordinates">Update coordinates from color.</param>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        public ColorEditorMode(string name, string xyShader, string zShader, Action updateColor, Action updateCoordinates)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(xyShader) || string.IsNullOrEmpty(zShader))
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(xyShader) || string.IsNullOrEmpty(zShader) || updateColor == null || updateCoordinates == null)
             {
                 throw new ArgumentNullException();
             }
@@ -21,6 +23,8 @@ namespace Kefir.ShaderColorEditor.Model
             _name = name;
             _xyShader = xyShader;
             _zShader = zShader;
+            _updateColor = updateColor;
+            _updateCoordinates = updateCoordinates;
         }
 
         public string Name
@@ -37,12 +41,19 @@ namespace Kefir.ShaderColorEditor.Model
             get { return _zShader; }
         }
 
-        public static IEnumerable<ColorEditorMode> GetAllModes()
+        public void UpdateColor()
         {
-            yield break;
+            _updateColor();
+        }
+
+        public void UpdateCoordinates()
+        {
+            _updateCoordinates();
         }
 
         private readonly string _name;
+        private readonly Action _updateColor;
+        private readonly Action _updateCoordinates;
         private readonly string _xyShader;
         private readonly string _zShader;
     }
