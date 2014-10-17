@@ -87,8 +87,8 @@ namespace Kefir.ShaderColorEditor.Controls
             if (e.LeftButton == MouseButtonState.Pressed && IsMouseCaptured)
             {
                 var pos = e.GetPosition(this);
-                PickX = pos.X;
-                PickY = pos.Y;
+                PickX = Math.Min(Math.Max(pos.X, 0), ActualWidth);
+                PickY = Math.Min(Math.Max(pos.Y, 0), ActualHeight);
             }
         }
 
