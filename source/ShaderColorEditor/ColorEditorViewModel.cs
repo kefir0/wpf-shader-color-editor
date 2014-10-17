@@ -67,6 +67,7 @@ namespace Kefir.ShaderColorEditor
 
                 _selectedMode = value;
                 OnPropertyChanged();
+                _selectedMode.UpdateCoordinates();
             }
         }
 
