@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:Kefir.ShaderColorEditor.Controls"
              xmlns:shaderColorEditor="clr-namespace:Kefir.ShaderColorEditor"
+             xmlns:model="clr-namespace:Kefir.ShaderColorEditor.Model"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -12,6 +13,25 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <DataTemplate DataType="{x:Type model:ColorEditorMode}">
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton GroupName="ColorEditorModes" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
+                    <TextBlock Text="{Binding Name}" Width="70" />
+                </StackPanel>
+            </DataTemplate>
+
+            <!-- Style to get rid of the selection visual -->
+            <Style TargetType="{x:Type ListBoxItem}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <ContentPresenter />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid x:Name="RootGrid" d:DataContext="{d:DesignInstance shaderColorEditor:ColorEditorViewModel}">
@@ -32,5 +52,8 @@
                                       PsFileName="{Binding SelectedMode.ZShader}"
                                       NormPickY="{Binding PickZ, Mode=TwoWay}" />
         </Border>
+        
+        <ListBox ItemsSource="{Binding Modes}" SelectedItem="{Binding SelectedMode}"
+                 Grid.Column="2" Margin="5,0,0,0"/> 
     </Grid>
 </UserControl>
