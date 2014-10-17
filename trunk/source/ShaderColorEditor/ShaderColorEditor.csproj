@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Shaders\hsv_test.fx" />
     <Content Include="Shaders\rgb_b.fx" />
     <Content Include="Shaders\rgb_g.fx" />
     <Content Include="Shaders\rgb_gb.fx" />
