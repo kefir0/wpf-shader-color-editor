@@ -90,19 +90,19 @@ namespace Kefir.ShaderColorEditor.Controls
 
         private void Update(Action action)
         {
-            if (mIsUpdating)
+            if (_isUpdating)
             {
                 return;
             }
 
-            mIsUpdating = true;
+            _isUpdating = true;
             try
             {
                 action();
             }
             finally
             {
-                mIsUpdating = false;
+                _isUpdating = false;
             }
         }
 
@@ -121,6 +121,6 @@ namespace Kefir.ShaderColorEditor.Controls
         public static readonly DependencyProperty PsFileNameProperty =
             DependencyProperty.Register("PsFileName", typeof(string), typeof(ColorPickerRect), new PropertyMetadata("rgb_rg"));
 
-        private bool mIsUpdating;
+        private bool _isUpdating;
     }
 }
