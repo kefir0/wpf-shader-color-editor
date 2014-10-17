@@ -56,14 +56,40 @@ namespace Kefir.ShaderColorEditor.Controls
             return new PointHitTestResult(this, hitTestParameters.HitPoint);
         }
 
-        protected override void OnMouseDown(MouseButtonEventArgs e)
+        /// <summary>
+        /// Invoked when an unhandled <see cref="E:System.Windows.UIElement.PreviewMouseLeftButtonDown" /> routed event reaches an element in its route that is derived from this class. Implement this method to add class handling for this event.
+        /// </summary>
+        /// <param name="e">The <see cref="T:System.Windows.Input.MouseButtonEventArgs" /> that contains the event data. The event data reports that the left mouse button was pressed.</param>
+        protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {
-            base.OnMouseDown(e);
+            base.OnPreviewMouseLeftButtonDown(e);
+            CaptureMouse();
+        }
 
-            // TODO: Proper drag mechanism
-            var pos = e.GetPosition(this);
-            PickX = pos.X;
-            PickY = pos.Y;
+        /// <summary>
+        /// Invoked when an unhandled <see cref="E:System.Windows.UIElement.PreviewMouseLeftButtonUp" /> routed event reaches an element in its route that is derived from this class. Implement this method to add class handling for this event.
+        /// </summary>
+        /// <param name="e">The <see cref="T:System.Windows.Input.MouseButtonEventArgs" /> that contains the event data. The event data reports that the left mouse button was released.</param>
+        protected override void OnPreviewMouseLeftButtonUp(MouseButtonEventArgs e)
+        {
+            base.OnPreviewMouseLeftButtonUp(e);
+            ReleaseMouseCapture();
+        }
+
+        /// <summary>
+        /// Invoked when an unhandled <see cref="E:System.Windows.UIElement.PreviewMouseMove" /> attached event reaches an element in its route that is derived from this class. Implement this method to add class handling for this event.
+        /// </summary>
+        /// <param name="e">The <see cref="T:System.Windows.Input.MouseEventArgs" /> that contains the event data.</param>
+        protected override void OnPreviewMouseMove(MouseEventArgs e)
+        {
+            base.OnPreviewMouseMove(e);
+
+            if (e.LeftButton == MouseButtonState.Pressed && IsMouseCaptured)
+            {
+                var pos = e.GetPosition(this);
+                PickX = pos.X;
+                PickY = pos.Y;
+            }
         }
 
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)

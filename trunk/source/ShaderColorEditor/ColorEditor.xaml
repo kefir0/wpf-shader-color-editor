@@ -22,9 +22,11 @@
         </Grid.ColumnDefinitions>
         <controls:ColorPickerRect Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
                                   InputColor="{Binding Color}"
+                                  PsFileName="{Binding SelectedMode.XyShader}"
                                   NormPickX="{Binding PickX, Mode=TwoWay}" NormPickY="{Binding PickY, Mode=TwoWay}" />
         <controls:ColorPickerRect Style="{StaticResource ColorPickerVerticalSliderStyle}" Grid.Column="1" Margin="5,0,0,0" Width="30"
                                   InputColor="{Binding Color}"
+                                  PsFileName="{Binding SelectedMode.ZShader}"
                                   NormPickY="{Binding PickZ, Mode=TwoWay}" />
     </Grid>
 </UserControl>

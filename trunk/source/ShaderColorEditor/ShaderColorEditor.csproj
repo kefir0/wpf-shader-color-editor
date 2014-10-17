@@ -91,15 +91,23 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Shaders\rgb_b.ps" />
+    <Resource Include="Shaders\rgb_g.ps" />
+    <Resource Include="Shaders\rgb_r.ps" />
     <Resource Include="Shaders\rgb_gb.ps" />
     <Resource Include="Shaders\rgb_rb.ps" />
     <Resource Include="Shaders\rgb_rg.ps" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Shaders\rgb_b.fx" />
+    <Content Include="Shaders\rgb_g.fx" />
     <Content Include="Shaders\rgb_gb.fx" />
+    <Content Include="Shaders\rgb_generic.fx" />
+    <Content Include="Shaders\rgb_r.fx" />
     <Content Include="Shaders\rgb_rb.fx" />
     <Content Include="Shaders\rgb_rg.fx" />
+    <Content Include="Shaders\rgb_test.fx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
