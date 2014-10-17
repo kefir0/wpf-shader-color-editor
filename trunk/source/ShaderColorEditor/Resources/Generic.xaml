@@ -33,9 +33,9 @@
             </Border>
             <Rectangle Canvas.Top="{TemplateBinding PickY}" 
                      StrokeThickness="2" Stroke="{StaticResource BlackWhiteGradientBrush}"
-                     Width="{TemplateBinding ActualWidth}" Height="7">
+                     Width="{TemplateBinding ActualWidth}" Height="5">
                 <Rectangle.RenderTransform>
-                    <TranslateTransform Y="-3" />
+                    <TranslateTransform Y="-2" />
                 </Rectangle.RenderTransform>
             </Rectangle>
         </Canvas>
