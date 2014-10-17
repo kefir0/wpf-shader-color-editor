@@ -11,7 +11,7 @@
         <Canvas>
             <Border Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}" Background="White">
                 <Border.Effect>
-                    <shaders:RgbEffect PsFileName="{Binding PsFileName, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <shaders:RgbEffect PsFileName="{Binding PsFileName, RelativeSource={RelativeSource TemplatedParent}}" InputColorRgb="{Binding InputColor, RelativeSource={RelativeSource TemplatedParent}}" />
                 </Border.Effect>
             </Border>
             <Ellipse Canvas.Left="{TemplateBinding PickX}" Canvas.Top="{TemplateBinding PickY}" 
@@ -28,7 +28,7 @@
         <Canvas>
             <Border Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}" Background="White">
                 <Border.Effect>
-                    <shaders:RgbEffect PsFileName="{Binding PsFileName, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <shaders:RgbEffect PsFileName="{Binding PsFileName, RelativeSource={RelativeSource TemplatedParent}}" InputColorRgb="{Binding InputColor, RelativeSource={RelativeSource TemplatedParent}}" />
                 </Border.Effect>
             </Border>
             <Rectangle Canvas.Top="{TemplateBinding PickY}" 

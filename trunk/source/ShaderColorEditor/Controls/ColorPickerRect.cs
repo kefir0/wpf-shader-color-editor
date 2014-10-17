@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Kefir.ShaderColorEditor.Model;
 
 namespace Kefir.ShaderColorEditor.Controls
 {
@@ -11,6 +12,12 @@ namespace Kefir.ShaderColorEditor.Controls
         static ColorPickerRect()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ColorPickerRect), new FrameworkPropertyMetadata(typeof(ColorPickerRect)));
+        }
+
+        public ColorRgb InputColor
+        {
+            get { return (ColorRgb)GetValue(InputColorProperty); }
+            set { SetValue(InputColorProperty, value); }
         }
 
         public double NormPickX
@@ -106,6 +113,9 @@ namespace Kefir.ShaderColorEditor.Controls
             }
         }
 
+        public static readonly DependencyProperty InputColorProperty =
+            DependencyProperty.Register("InputColor", typeof(ColorRgb), typeof(ColorPickerRect));
+
         public static readonly DependencyProperty NormPickXProperty =
             DependencyProperty.Register("NormPickX", typeof(double), typeof(ColorPickerRect), new PropertyMetadata((d, e) => ((ColorPickerRect)d).OnNormPickXChanged()));
 
@@ -120,6 +130,7 @@ namespace Kefir.ShaderColorEditor.Controls
 
         public static readonly DependencyProperty PsFileNameProperty =
             DependencyProperty.Register("PsFileName", typeof(string), typeof(ColorPickerRect), new PropertyMetadata("rgb_rg"));
+
 
         private bool _isUpdating;
     }

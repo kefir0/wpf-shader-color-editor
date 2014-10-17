@@ -102,7 +102,14 @@ namespace Kefir.ShaderColorEditor
             });
         }
 
-        private readonly ColorRgb _color = new ColorRgb();
+        private readonly ColorRgb _color = new ColorRgb
+        {
+            A = 1,
+            R = 1,
+            G = 0.5,
+            B = 0.1
+        };
+
         private readonly ColorEditorMode[] _modes;
         private double _pickX;
         private double _pickY;
