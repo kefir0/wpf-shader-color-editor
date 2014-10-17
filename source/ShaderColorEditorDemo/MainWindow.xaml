@@ -1,9 +1,9 @@
 ﻿<Window x:Class="Kefir.ShaderColorEditorDemo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="clr-namespace:Kefir.ShaderColorEditor.Controls;assembly=Kefir.ShaderColorEditor"
+        xmlns:shaderColorEditor="clr-namespace:Kefir.ShaderColorEditor;assembly=Kefir.ShaderColorEditor"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <controls:ColorPickerRect />
+        <shaderColorEditor:ColorEditor />
     </Grid>
 </Window>

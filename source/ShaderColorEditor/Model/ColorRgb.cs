@@ -1,29 +1,62 @@
-﻿namespace Kefir.ShaderColorEditor.Model
+﻿using System;
+
+namespace Kefir.ShaderColorEditor.Model
 {
     public class ColorRgb : ModelBase
     {
         public double A
         {
             get { return _a; }
-            set { _a = value; }
+            set
+            {
+                ValidateComponent(value);
+                _a = value;
+                OnPropertyChanged();
+            }
         }
 
         public double B
         {
             get { return _b; }
-            set { _b = value; }
+            set
+            {
+                ValidateComponent(value);
+                _b = value;
+                OnPropertyChanged();
+            }
         }
 
         public double G
         {
             get { return _g; }
-            set { _g = value; }
+            set
+            {
+                ValidateComponent(value);
+                _g = value;
+                OnPropertyChanged();
+            }
         }
 
         public double R
         {
             get { return _r; }
-            set { _r = value; }
+            set
+            {
+                ValidateComponent(value);
+                _r = value;
+            }
+        }
+
+        private static void ValidateComponent(double component)
+        {
+            if (component < 0)
+            {
+                throw new ArgumentOutOfRangeException("Color component can't be less than 0");
+            }
+            if (component > 1)
+            {
+                throw new ArgumentOutOfRangeException("Color component can't be greater than 1");
+            }
         }
 
         private double _a;
