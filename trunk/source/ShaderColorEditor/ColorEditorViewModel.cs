@@ -13,6 +13,7 @@ namespace Kefir.ShaderColorEditor
             _modes = CreateModes().ToArray();
             _selectedMode = Modes.First();
             _color.PropertyChanged += Color_PropertyChanged;
+            SelectedMode.UpdateCoordinates();
         }
 
         public ColorRgb Color
